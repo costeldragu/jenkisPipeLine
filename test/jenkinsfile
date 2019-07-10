@@ -8,19 +8,27 @@ pipeline {
 
     stages {
         stage("Checkout the project") {
-            checkout scm
+           steps {
+               checkout scm
+           }
         }
         stage("prepear system env") {
-            sh "ls -la ${pwd()}"
-            String parentDir = pwd()
-            steps = load "${parentDir}/jenkinsfile"
+            steps {
+                sh "ls -la ${pwd()}"
+                String parentDir = pwd()
+                steps = load "${parentDir}/jenkinsfile"
+            }
         }
 
         stage("Create build output") {
-            steps.createBuildOutput(this.pipeline.node)
+            steps {
+                steps.createBuildOutput(this.pipeline.node)
+            }
         }
         stage("Archive build output") {
-            steps.archiveBuildOutput(this.pipeline.node)
+            steps {
+                steps.archiveBuildOutput(this.pipeline.node)
+            }
         }
 
 
