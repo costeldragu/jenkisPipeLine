@@ -17,3 +17,5 @@ def createBuildOutput(parameters) {
 def archiveBuildOutput(parameters) {
     stage "Archive build output"
 }
+
+return this
