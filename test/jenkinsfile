@@ -2,11 +2,11 @@
 node {
    checkout scm
     sh "ls -la ${pwd()}"
-//    String parentDir = pwd("../")
-//    def steps = load "${parentDir}/jenkinsfile"
-//    def workingDir ="workingDir "
-//    steps.createBuildOutput(this)
-//    steps.archiveBuildOutput(this)
+    String parentDir = pwd()
+    def steps = load "${parentDir}/jenkinsfile"
+    def workingDir ="workingDir "
+    steps.createBuildOutput(this)
+    steps.archiveBuildOutput(this)
 
 
 
