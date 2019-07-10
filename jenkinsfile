@@ -10,11 +10,11 @@ def createBuildOutput(parameters) {
     // Write an useless file, which is not needed to be archived.
     writeFile file: "output/uselessfile.md", text: "This file is useless, no need to archive it."
 
-    println(parameters.node)
+    println(parameters)
 }
 
 def archiveBuildOutput(parameters) {
-    println(parameters.node)
+    println(parameters.parentDir)
 }
 
 return this
