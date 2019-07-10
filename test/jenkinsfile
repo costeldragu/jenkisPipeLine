@@ -1,7 +1,7 @@
 // This shows a simple example of how to archive the build output artifacts.
 node {
 
-    String parentDir = new File(".").getParentFile().getAbsolutePath()
+    String parentDir = pwd("../")
     def steps = load "${parentDir}/jenkinsfile"
     def workingDir ="workingDir "
     steps.createBuildOutput(this)
