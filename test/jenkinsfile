@@ -5,10 +5,9 @@ node {
     def steps = load "${parentDir}/jenkinsfile"
     def workingDir ="workingDir "
     steps.createBuildOutput(this)
+    steps.archiveBuildOutput(this)
 
 
-
-    stage "Archive build output"
 
 
 }

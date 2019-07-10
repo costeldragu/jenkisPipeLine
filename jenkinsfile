@@ -13,3 +13,7 @@ def createBuildOutput(parameters) {
 
     println(parameters.workingDir)
 }
+
+def archiveBuildOutput(parameters) {
+    stage "Archive build output"
+}
