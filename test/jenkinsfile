@@ -1,5 +1,5 @@
 // This shows a simple example of how to archive the build output artifacts.
-
+def steps
 pipeline {
     agent any
     environment {
@@ -10,13 +10,18 @@ pipeline {
         stage("Checkout the project") {
             checkout scm
         }
+        stage("prepear system env") {
+            sh "ls -la ${pwd()}"
+            String parentDir = pwd()
+            steps = load "${parentDir}/jenkinsfile"
+        }
 
-        sh "ls -la ${pwd()}"
-        String parentDir = pwd()
-        def steps = load "${parentDir}/jenkinsfile"
-
-        steps.createBuildOutput(this.pipeline.node)
-        steps.archiveBuildOutput(this.pipeline.node)
+        stage("Create build output") {
+            steps.createBuildOutput(this.pipeline.node)
+        }
+        stage("Archive build output") {
+            steps.archiveBuildOutput(this.pipeline.node)
+        }
 
 
 
