@@ -6,8 +6,11 @@ pipeline {
         workingDir ="workingDir "
     }
 
-    node {
-        checkout scm
+    stages {
+        stages("Checkout the project") {
+            checkout scm
+        }
+
         sh "ls -la ${pwd()}"
         String parentDir = pwd()
         def steps = load "${parentDir}/jenkinsfile"
