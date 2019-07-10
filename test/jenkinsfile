@@ -1,16 +1,22 @@
 // This shows a simple example of how to archive the build output artifacts.
-node {
-   checkout scm
-    sh "ls -la ${pwd()}"
-    String parentDir = pwd()
-    def steps = load "${parentDir}/jenkinsfile"
+
+pipeline {
+    agent any
     environment {
         workingDir ="workingDir "
     }
-    steps.createBuildOutput(this)
-    steps.archiveBuildOutput(this)
+
+    node {
+        checkout scm
+        sh "ls -la ${pwd()}"
+        String parentDir = pwd()
+        def steps = load "${parentDir}/jenkinsfile"
+
+        steps.createBuildOutput(this.pipeline.node)
+        steps.archiveBuildOutput(this.pipeline.node)
 
 
 
 
+    }
 }
