@@ -4,8 +4,11 @@ node {
     sh "ls -la ${pwd()}"
     String parentDir = pwd()
     def steps = load "${parentDir}/jenkinsfile"
-    steps.createBuildOutput(node)
-    steps.archiveBuildOutput(node)
+    def params = [
+        "dir" : parentDir
+    ]
+    steps.createBuildOutput(params)
+    steps.archiveBuildOutput(params)
 
 
 

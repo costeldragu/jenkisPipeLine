@@ -14,7 +14,7 @@ def createBuildOutput(parameters) {
 }
 
 def archiveBuildOutput(parameters) {
-    println(parameters.parentDir)
+    println(parameters.dir)
 }
 
 return this
