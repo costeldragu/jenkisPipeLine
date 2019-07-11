@@ -7,8 +7,15 @@ node {
     def params = [
         "dir" : parentDir
     ]
-    steps.createBuildOutput(params)
-    steps.archiveBuildOutput(params)
+    stage("demo Stage") {
+        step("Step 1") {
+            steps.createBuildOutput(params)
+        }
+        step("Step 2") {
+            steps.archiveBuildOutput(params)
+        }
+
+    }
 
 
 
