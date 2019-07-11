@@ -8,14 +8,18 @@ node {
         "dir" : parentDir
     ]
     stage("demo Stage") {
-        step("Step 1") {
-            steps.createBuildOutput(params)
-        }
-        step("Step 2") {
-            steps.archiveBuildOutput(params)
+        when {
+            branch 'master'
         }
 
+            steps.createBuildOutput(params)
+
     }
+
+    stage ("Step 2") {
+        steps.archiveBuildOutput(params)
+    }
+
 
 
 
