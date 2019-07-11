@@ -8,11 +8,12 @@ node {
         "dir" : parentDir
     ]
     stage("demo Stage") {
-        when {
-            branch 'master'
-        }
+       if(env.BRANCH == "master") {
+           steps.createBuildOutput(params)
+       }
 
-            steps.createBuildOutput(params)
+
+
 
     }
 
